@@ -45,90 +45,19 @@
 #define AUDIO_CODEC_I2C_SDA_PIN  GPIO_NUM_16
 #define AUDIO_CODEC_ES8311_ADDR  ES8311_CODEC_DEFAULT_ADDR
 
-// Touchscreen section (FT6236G)
-#define TOUCH_I2C_NUM            I2C_NUM_0  // Shared audio I2C bus
-#define TOUCH_I2C_SCL_PIN        GPIO_NUM_15
-#define TOUCH_I2C_SDA_PIN        GPIO_NUM_16
-#define TOUCH_RST_PIN            GPIO_NUM_18  // Touchscreen reset, active low
-#define TOUCH_INT_PIN            GPIO_NUM_17  // Touch interrupt, input low level when touched
-#define TOUCH_I2C_ADDR           0x38         // Default address of FT6236G
-
 // Boot pin
 #define BOOT_BUTTON_GPIO GPIO_NUM_0
 #define BUILTIN_LED_GPIO GPIO_NUM_42
 
 // Screen display section
-#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_45
+// OLED Display I2C section (SH1106 128x64) - NEED TO FIND AVAILABLE PINS!
+#define DISPLAY_I2C_NUM     I2C_NUM_1
+#define DISPLAY_SDA_PIN     GPIO_NUM_16
+#define DISPLAY_SCL_PIN     GPIO_NUM_15
+#define DISPLAY_WIDTH       128
+#define DISPLAY_HEIGHT      64
+#define DISPLAY_MIRROR_X    true
+#define DISPLAY_MIRROR_Y    true
 
-#define DISPLAY_RST_PIN       GPIO_NUM_NC
-#define DISPLAY_SCK_PIN       GPIO_NUM_12
-#define DISPLAY_DC_PIN        GPIO_NUM_46
-#define DISPLAY_CS_PIN        GPIO_NUM_10
-#define DISPLAY_MOSI_PIN      GPIO_NUM_11
-#define DISPLAY_MIS0_PIN      GPIO_NUM_13
-#define DISPLAY_SPI_SCLK_HZ   (20 * 1000 * 1000)
-
-#define LCD_SPI_HOST          SPI3_HOST
-
-#define LCD_ROTATION_DEGREE   0  // Set to 0, 90, 180, or 270
-#if LCD_ROTATION_DEGREE == 0
-#define LCD_TYPE_ILI9341_SERIAL
-#define DISPLAY_WIDTH         240
-#define DISPLAY_HEIGHT        320
-#define DISPLAY_MIRROR_X      true
-#define DISPLAY_MIRROR_Y      false
-#define DISPLAY_SWAP_XY       false
-#define DISPLAY_INVERT_COLOR  true
-#define DISPLAY_RGB_ORDER     LCD_RGB_ELEMENT_ORDER_BGR
-#define DISPLAY_OFFSET_X      0
-#define DISPLAY_OFFSET_Y      0
-#define DISPLAY_BACKLIGHT_OUTPUT_INVERT false
-#define DISPLAY_SPI_MODE      0
-#endif
-
-#if LCD_ROTATION_DEGREE == 90
-#define LCD_TYPE_ILI9341_SERIAL
-#define DISPLAY_WIDTH         320
-#define DISPLAY_HEIGHT        240
-#define DISPLAY_MIRROR_X      true
-#define DISPLAY_MIRROR_Y      true
-#define DISPLAY_SWAP_XY       true
-#define DISPLAY_INVERT_COLOR  true
-#define DISPLAY_RGB_ORDER     LCD_RGB_ELEMENT_ORDER_BGR
-#define DISPLAY_OFFSET_X      0
-#define DISPLAY_OFFSET_Y      0
-#define DISPLAY_BACKLIGHT_OUTPUT_INVERT false
-#define DISPLAY_SPI_MODE      0
-#endif
-
-#if LCD_ROTATION_DEGREE == 180
-#define LCD_TYPE_ILI9341_SERIAL
-#define DISPLAY_WIDTH         240
-#define DISPLAY_HEIGHT        320
-#define DISPLAY_MIRROR_X      false
-#define DISPLAY_MIRROR_Y      true
-#define DISPLAY_SWAP_XY       false
-#define DISPLAY_INVERT_COLOR  true
-#define DISPLAY_RGB_ORDER     LCD_RGB_ELEMENT_ORDER_BGR
-#define DISPLAY_OFFSET_X      0
-#define DISPLAY_OFFSET_Y      0
-#define DISPLAY_BACKLIGHT_OUTPUT_INVERT false
-#define DISPLAY_SPI_MODE      0
-#endif
-
-#if LCD_ROTATION_DEGREE == 270
-#define LCD_TYPE_ILI9341_SERIAL
-#define DISPLAY_WIDTH         320
-#define DISPLAY_HEIGHT        240
-#define DISPLAY_MIRROR_X      false
-#define DISPLAY_MIRROR_Y      false
-#define DISPLAY_SWAP_XY       true
-#define DISPLAY_INVERT_COLOR  true
-#define DISPLAY_RGB_ORDER     LCD_RGB_ELEMENT_ORDER_BGR
-#define DISPLAY_OFFSET_X      0
-#define DISPLAY_OFFSET_Y      0
-#define DISPLAY_BACKLIGHT_OUTPUT_INVERT false
-#define DISPLAY_SPI_MODE      0
-#endif
-
-#endif  // _BOARD_CONFIG_H_
+// Define SH1106 driver
+#define SH1106
