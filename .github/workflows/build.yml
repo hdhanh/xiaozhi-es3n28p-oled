@@ -109,3 +109,4 @@ jobs:
           name: xiaozhi_${{ matrix.name }}_${{ github.sha }}.bin
           path: build/merged-binary.bin
           if-no-files-found: error
+ 
